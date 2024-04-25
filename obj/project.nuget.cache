@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eTiapNvn0jrnKTj19l1b6R7edU8DdieN9XQGbbwTYHm1JSS5flkmTuU6G/CYRELqFgxyqxofTNxmIs2n6PU+Hg==",
+  "dgSpecHash": "iCzdff6cqBAOibpjYmMt5MUfeUZ7U6bfFPDCQ25WdBZWW9mPHstTXBUBVBqcoz176P/7jn6pxPSTC9IVmMk1lQ==",
   "success": true,
-  "projectFilePath": "D:\\Courses\\.NET Course Udemy\\Practice\\DotnetAPI\\DotnetAPI.csproj",
+  "projectFilePath": "C:\\Moiz Files\\Courses\\.NET Course Udemy\\Practice\\DotnetAPI\\DotnetAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\moiz_\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\moiz_\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
@@ -54,7 +54,11 @@
     "C:\\Users\\moiz_\\.nuget\\packages\\system.text.encodings.web\\4.7.2\\system.text.encodings.web.4.7.2.nupkg.sha512",
     "C:\\Users\\moiz_\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\moiz_\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\moiz_\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\moiz_\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\moiz_\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.18\\microsoft.netcore.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\moiz_\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.18\\microsoft.windowsdesktop.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\moiz_\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.18\\microsoft.aspnetcore.app.ref.7.0.18.nupkg.sha512",
+    "C:\\Users\\moiz_\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.18\\microsoft.netcore.app.host.win-x64.7.0.18.nupkg.sha512"
   ],
   "logs": []
 }
