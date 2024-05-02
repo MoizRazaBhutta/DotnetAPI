@@ -9,31 +9,23 @@ namespace DotnetAPI.Controllers;
 [Route("[controller]")]
 public class UserEFController : ControllerBase
 {
-    // Create dapper private var
-    DataContextEF _entityFramework;
+    IUserRepository _userRepository;
 
-    public UserEFController(IConfiguration configuration)
+    public UserEFController(IUserRepository userRepository)
     {
-        // Access Dapper and pass the config to access the connection string into that class
-        _entityFramework = new DataContextEF(configuration);
-
+        _userRepository = userRepository;
     }
 
     [HttpGet("GetUsers")]
     public IEnumerable<User> GetUsers()
     {
-        IEnumerable<User> users = _entityFramework.Users.ToList<User>();
+        IEnumerable<User> users = _userRepository.GetUsers();
         return users;
     }
     [HttpGet("GetSingleUser/{userId}")]
     public User GetSingleUser(int userId)
     {
-        User? user = _entityFramework.Users.Where(u => u.UserId == userId).FirstOrDefault<User>();
-        if(user != null)
-        {
-            return user;
-        }
-        throw new Exception("Failed to Get User");
+        return _userRepository.GetSingleUser(userId);
     }
 
     // Put/Post request can expect a response body of any model in its parameter
@@ -41,7 +33,7 @@ public class UserEFController : ControllerBase
     public IActionResult EditUser(User user)
     {
         // If we find a matching object from db to the one we have
-        User? userDb = _entityFramework.Users.Where(u => u.UserId == user.UserId).FirstOrDefault<User>();
+        User? userDb = _userRepository.GetSingleUser(user.UserId);
         if(userDb != null)
         {
             // Update the db value with the one user we have
@@ -51,7 +43,7 @@ public class UserEFController : ControllerBase
             userDb.Email = user.Email;
             userDb.Gender = user.Gender;
             // Save Changes if no of row effected is one
-            if(_entityFramework.SaveChanges() > 0 )
+            if(_userRepository.SaveChanges())
             {
                 return Ok();
             }
@@ -70,9 +62,9 @@ public class UserEFController : ControllerBase
         userDb.LastName = user.LastName;
         userDb.Email = user.Email;
         userDb.Gender = user.Gender;
-        _entityFramework.Add(userDb);
+        _userRepository.AddEntity<User>(userDb);
         // Save Changes if no of row effected is one
-        if(_entityFramework.SaveChanges() > 0 )
+        if(_userRepository.SaveChanges())
         {
             return Ok();
         }
@@ -82,13 +74,13 @@ public class UserEFController : ControllerBase
     [HttpDelete("DeleteUser/{userId}")]
     public IActionResult DeleteUser(int userId)
     {
-        User? userDb = _entityFramework.Users.Where(u => u.UserId == userId).FirstOrDefault<User>();
+        User? userDb = _userRepository.GetSingleUser(userId);
 
         if(userDb != null)
         {
-            _entityFramework.Users.Remove(userDb);
+            _userRepository.RemoveEntity<User>(userDb);
             // Save Changes if no of row effected is one
-            if(_entityFramework.SaveChanges() > 0 )
+            if(_userRepository.SaveChanges())
             {
                 return Ok();
             }
